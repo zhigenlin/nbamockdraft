@@ -1,5 +1,3 @@
-rm(list=ls())
-
 library(shiny)
 
 ui <- fluidPage(
