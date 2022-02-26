@@ -50,10 +50,12 @@ server <- function(input, output) {
     #  mychoices = c(mychoices,mychoice)
     
     nbalist =  filedefault()
+    copy.nbalist = nbalist
     
     set.seed(input$attempt)
     theparam = input$param
     ourpicknumbers = as.integer(strsplit(input$mypicknumbers,",")[[1]])
+    copy.ourpicknumbers = ourpicknumbers
     totalrounds = length(ourpicknumbers)
     totalpicks = input$totalteams * totalrounds
     
@@ -113,6 +115,12 @@ server <- function(input, output) {
     }
     
     a = nbalist[mychoices,c(1,2,3,4)]
+    
+    if (1 %in% copy.ourpicknumbers) {
+      a=a[-1,]
+      a=rbind(copy.nbalist[1,c(1,2,3,4)],a)
+    }
+    
     names(a) = c("Name","Team","Position","Points")
     a
     
