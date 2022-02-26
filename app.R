@@ -123,5 +123,3 @@ server <- function(input, output) {
 }
 
 shinyApp(ui = ui, server = server)
-
-runApp("my_app")
